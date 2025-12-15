@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammed Faraz</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .project-card:hover::before {
+      left: 100%;
+    }
+    
+    .tech-tag {
+      transition: all 0.3s ease;
+    }
+    
+    .tech-tag:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .floating-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(102, 126, 234, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particleFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes particleFloat {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: translate(20px, -20px) scale(1.2);
+        opacity: 0.3;
+      }
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px);
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto" style="background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);"><!-- Floating Particles Background -->
+   <div id="particles" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></div><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background: rgba(15, 12, 41, 0.8); border-bottom: 1px solid rgba(102, 126, 234, 0.2);">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex justify-between items-center">
+      <div id="nav-logo" class="text-2xl font-bold gradient-text">
+       Portfolio
+      </div>
+      <div class="flex gap-8"><a href="#home" class="nav-link text-gray-300 hover:text-white">Home</a> <a href="#about" class="nav-link text-gray-300 hover:text-white">About</a> <a href="#skills" class="nav-link text-gray-300 hover:text-white">Skills</a> <a href="#projects" class="nav-link text-gray-300 hover:text-white">Projects</a> <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-20" style="z-index: 1;">
+    <div class="text-center fade-in">
+     <h1 id="hero-title" class="text-6xl md:text-8xl font-bold mb-6 gradient-text floating-animation">Mohammed Faraz</h1>
+     <p id="hero-subtitle" class="text-2xl md:text-3xl text-gray-300 mb-8">Full-Stack Developer &amp; Data Analyst</p>
+     <div class="flex gap-4 justify-center"><a href="#projects" class="px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);">View Projects</a> <a href="#contact" class="px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105" style="background: transparent; color: white; border: 2px solid #667eea;">Get in Touch</a>
+     </div>
+     <div class="scroll-indicator mt-16">
+      <svg width="30" height="30" viewbox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7" />
+      </svg>
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="relative py-20 px-6" style="z-index: 1;">
+    <div class="max-w-4xl mx-auto">
+     <h2 id="about-heading" class="text-5xl font-bold mb-8 gradient-text">About Me</h2>
+     <div class="bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+      <p id="about-text" class="text-xl text-gray-300 leading-relaxed">I'm a passionate developer with expertise in creating beautiful, functional web applications. I love turning complex problems into simple, elegant solutions. With a strong foundation in both frontend and backend technologies, I bring ideas to life through code.</p>
+      <div class="mt-8 flex flex-wrap gap-3"><span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">Java</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">Python</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">Spring Boot</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">PosgreSQL</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">API Integration</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">Github</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">React</span> <span class="tech-tag px-4 py-2 rounded-full text-sm font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea; border: 1px solid #667eea;">Postman</span>
+      </div>
+     </div>
+    </div>
+   </section><!-- Skills Section -->
+   <section id="skills" class="relative py-20 px-6" style="z-index: 1;">
+    <div class="max-w-7xl mx-auto">
+     <h2 class="text-5xl md:text-6xl font-bold mb-4 text-center" style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);">Skills & Expertise</h2>
+     <p class="text-center text-gray-400 text-lg mb-12">A look at the technologies I work with.</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Frontend Card -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 project-card hover:border-red-500 transition-all duration-300">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-2xl font-bold" style="color: #ef4444;">&lt;/&gt;</div>
+        <h3 class="text-xl font-bold text-white">Frontend</h3>
+       </div>
+       <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <span>&lt;/&gt;</span>
+         <span>HTML</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <span>{ / }</span>
+         <span>CSS</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <span>{}</span>
+         <span>JavaScript</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#61dafb"><circle cx="12" cy="12" r="2"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+         <span>React</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <span>{}</span>
+         <span>TypeScript</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#38bdf8"><path d="M12 6c-3.87 0-7 3.13-7 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm-1 4l4 4-4 4v-3H8v-2h3v-3z"/></svg>
+         <span>TailwindCSS</span>
+        </span>
+       </div>
+      </div>
+      <!-- Backend Card -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 project-card hover:border-red-500 transition-all duration-300">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-2xl font-bold" style="color: #ef4444;">▦▦</div>
+        <h3 class="text-xl font-bold text-white">Backend</h3>
+       </div>
+       <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#339933"><path d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.736-1.544c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.203,1.243c0.082,0.046,0.197,0.046,0.279,0l8.625-4.853 c0.082-0.047,0.136-0.141,0.136-0.238V6.371c0-0.099-0.057-0.192-0.137-0.242l-8.623-4.854c-0.081-0.047-0.197-0.047-0.279,0 L3.15,6.124C3.069,6.172,3.015,6.266,3.015,6.365v9.47c0,0.097,0.054,0.191,0.135,0.238l2.269,1.279c0.258,0.145,0.413,0.424,0.413,0.721 c0,0.03-0.002,0.061-0.006,0.091c-0.003,0.023-0.008,0.047-0.013,0.07c-0.003,0.016-0.006,0.031-0.01,0.047 c-0.019,0.085-0.048,0.17-0.087,0.25c-0.002,0.005-0.004,0.01-0.006,0.015c-0.026,0.05-0.056,0.098-0.09,0.144 c-0.002,0.003-0.004,0.006-0.006,0.009c-0.033,0.045-0.07,0.088-0.111,0.127c-0.003,0.003-0.006,0.006-0.009,0.009 c-0.04,0.04-0.083,0.075-0.13,0.106c-0.003,0.002-0.006,0.005-0.009,0.007c-0.05,0.033-0.103,0.06-0.159,0.081 c-0.003,0.001-0.006,0.003-0.009,0.004c-0.062,0.022-0.126,0.037-0.192,0.044c-0.002,0-0.005,0.001-0.007,0.001 c-0.066,0.008-0.132,0.008-0.199,0.002c-0.002,0-0.004-0.001-0.006-0.001c-0.062-0.006-0.123-0.018-0.182-0.036 c-0.003-0.001-0.006-0.002-0.009-0.003c-0.055-0.019-0.107-0.043-0.156-0.074c-0.003-0.002-0.006-0.004-0.009-0.006 c-0.045-0.029-0.088-0.062-0.127-0.099c-0.003-0.003-0.006-0.006-0.009-0.009c-0.039-0.037-0.075-0.077-0.107-0.12 c-0.002-0.003-0.004-0.006-0.006-0.009c-0.032-0.044-0.06-0.09-0.084-0.138c-0.002-0.005-0.004-0.01-0.006-0.015 c-0.037-0.078-0.065-0.161-0.083-0.244c-0.004-0.016-0.007-0.032-0.01-0.048c-0.005-0.023-0.01-0.047-0.013-0.07 c-0.004-0.03-0.006-0.061-0.006-0.091c0-0.297,0.155-0.576,0.413-0.721l2.269-1.279c0.081-0.047,0.135-0.141,0.135-0.238V6.365 c0-0.099-0.054-0.193-0.135-0.242L3.15,4.88c-0.081-0.047-0.197-0.047-0.279,0L1.137,5.771C0.492,6.108,0,6.716,0,7.404v9.193 c0,0.688,0.492,1.295,1.137,1.633l10.938,6.174c0.281,0.163,0.601,0.247,0.922,0.247c0.321,0,0.641-0.084,0.922-0.247l10.931-6.174 c0.645-0.338,1.137-0.945,1.137-1.633V7.404c0-0.688-0.492-1.295-1.137-1.633L12.92,0.247C12.639,0.084,12.319,0,11.998,0z"/></svg>
+         <span>Spring Boot</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <span>▦▦</span>
+         <span>Node.js</span>
+        </span>
+       </div>
+      </div>
+      <!-- Databases & Cloud Card -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 project-card hover:border-red-500 transition-all duration-300">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-2xl font-bold" style="color: #ef4444;">▦▦</div>
+        <h3 class="text-xl font-bold text-white">Databases & Cloud</h3>
+       </div>
+       <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#3ecf8e"><path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.401.562a1.04 1.04 0 0 0 .836 1.659H12v8.959a.396.396 0 0 0 .716.233l9.081-12.261.401-.562a1.04 1.04 0 0 0-.836-1.66z"/></svg>
+         <span>PostgreSQL</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffa000"><path d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.219-.295L4.53 2.937 8.28 19.14zM14.3 7.955l-1.52-5.755a.542.542 0 00-.666-.353L3.61 4.775 7.15 19.14z"/></svg>
+         <span>Firebase</span>
+        </span>
+       </div>
+      </div>
+      <!-- Deployment Card -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 project-card hover:border-red-500 transition-all duration-300">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-2xl font-bold" style="color: #ef4444;">☁</div>
+        <h3 class="text-xl font-bold text-white">Deployment</h3>
+       </div>
+       <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#00c7b7"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.27l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 5.005 4.27 9.175 9.847 9.88.193.033.407.059.613.117.23.063.465.12.693.177.24.06.48.118.72.166.24.05.48.09.72.12.24.03.48.06.72.075.24.015.48.03.72.03.24 0 .48-.015.72-.03.24-.015.48-.045.72-.075.24-.03.48-.07.72-.12.24-.048.48-.106.72-.166.228-.057.463-.114.693-.177.206-.058.42-.084.613-.117C19.73 19.489 24 15.319 24 10.314"/></svg>
+         <span>Netlify</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#000"><path d="M12 0L2.4 6v12L12 24l9.6-6V6L12 0zm0 2.18l7.2 4.5v9l-7.2 4.5-7.2-4.5v-9L12 2.18z"/></svg>
+         <span>Vercel</span>
+        </span>
+       </div>
+      </div>
+      <!-- Other Interests Card -->
+      <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 project-card hover:border-red-500 transition-all duration-300">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="text-2xl font-bold" style="color: #ef4444;">👤</div>
+        <h3 class="text-xl font-bold text-white">Other Interests</h3>
+       </div>
+       <div class="flex flex-wrap gap-3">
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff6b6b"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+         <span>AI Integrations</span>
+        </span>
+        <span class="px-3 py-2 rounded-lg text-sm font-medium text-white flex items-center gap-2" style="background: rgba(30, 30, 30, 0.8);">
+         <svg width="16" height="16" viewBox="0 0 24 24" fill="#4ecdc4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+         <span>Data Science</span>
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Projects Section -->
+   <section id="projects" class="relative py-20 px-6" style="z-index: 1;">
+    <div class="max-w-7xl mx-auto">
+     <h2 id="projects-heading" class="text-5xl font-bold mb-12 gradient-text text-center">Featured Projects</h2>
+     <div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Movie Recommendation System -->
+      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+       <div class="mb-4">
+        <h3 class="text-2xl font-bold text-white mb-2">EduRise Donation Portal</h3>
+        <p class="text-gray-400">EduRise aims to bridge the gap between students and donors through a transparent donation system.It allows students to request support, donors to contribute, and admins to manage approvals securely.</p>
+       </div>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Java</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Spring Boot</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">JWT Authentication</span>
+       </div>
+       <div class="text-sm text-gray-400">
+        <p class="mb-2">🎯 Key Features:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-500">
+         <li>Full-stack project connecting students and donors.</li>
+         <li>Built with Java, Spring Boot, React, PostgreSQL.</li>
+         <li>Features JWT authentication & role-based access.</li>
+         <li>Tracks donations with admin approval workflow.</li>
+        </ul>
+       </div>
+      </div><!-- Sentiment Analysis -->
+      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+       <div class="mb-4">
+        <h3 class="text-2xl font-bold text-white mb-2">💬Ebus Management</h3>
+        <p class="text-gray-400">A natural language processing tool that analyzes text sentiment and emotion detection with high accuracy.</p>
+       </div>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">NLP</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">NLTK</span>
+       </div>
+       <div class="text-sm text-gray-400">
+        <p class="mb-2">🎯 Key Features:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-500">
+         <li>Real-time sentiment detection</li>
+         <li>Emotion classification</li>
+         <li>Multilingual support</li>
+        </ul>
+       </div>
+      </div><!-- Voice Assistant -->
+      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+       <div class="mb-4">
+        <h3 class="text-2xl font-bold text-white mb-2">🎙️ AI Voice Assistant</h3>
+        <p class="text-gray-400">An intelligent voice-activated assistant capable of executing commands, answering queries, and controlling smart devices.</p>
+       </div>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Speech Recognition</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">AI</span>
+       </div>
+       <div class="text-sm text-gray-400">
+        <p class="mb-2">🎯 Key Features:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-500">
+         <li>Voice command processing</li>
+         <li>Natural conversation flow</li>
+         <li>Task automation</li>
+        </ul>
+       </div>
+      </div><!-- News Aggregator -->
+      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
+       <div class="mb-4">
+        <h3 class="text-2xl font-bold text-white mb-2">📰 Smart News Aggregator</h3>
+        <p class="text-gray-400">A web scraping application that collects and organizes news from multiple sources with intelligent categorization.</p>
+       </div>
+       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Web Scraping</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">BeautifulSoup</span>
+       </div>
+       <div class="text-sm text-gray-400">
+        <p class="mb-2">🎯 Key Features:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-500">
+         <li>Multi-source aggregation</li>
+         <li>Automatic categorization</li>
+         <li>Real-time updates</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contact" class="relative py-20 px-6" style="z-index: 1;">
+    <div class="max-w-4xl mx-auto text-center">
+     <h2 id="contact-heading" class="text-5xl font-bold mb-8 gradient-text">Let's Connect</h2>
+     <div class="bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-8 border border-gray-800">
+      <p class="text-xl text-gray-300 mb-8">Interested in working together or just want to say hi? Feel free to reach out!</p>
+      <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+       <div class="flex items-center gap-3">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
+        </svg>
+        <div class="text-left">
+         <p id="email-label" class="text-sm text-gray-400">Email</p>
+         <p class="text-white">mohammedfaraz156@gmail.com</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#667eea" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /> <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div class="text-left">
+         <p id="location-label" class="text-sm text-gray-400">Location</p>
+         <p class="text-white">India</p>
+        </div>
+       </div>
+      </div>
+      <div class="mt-8 flex gap-4 justify-center"><a href="https://github.com/Mohammed-Farazzz" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(102, 126, 234, 0.2); border: 1px solid #667eea;">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="#667eea"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+        </svg></a> <a href="https://www.linkedin.com/in/Mohammed-Farazzz" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(102, 126, 234, 0.2); border: 1px solid #667eea;">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="#667eea"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+        </svg></a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background: rgba(102, 126, 234, 0.2); border: 1px solid #667eea;">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="#667eea"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+        </svg></a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="relative py-8 px-6 text-center text-gray-400 border-t border-gray-800" style="z-index: 1;">
+    <p>© 2026 Mohammed Faraz. Built with creativity and code.</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#0f0c29",
+      surface_color: "#1a1a2e",
+      text_color: "#e0e0e0",
+      primary_action_color: "#667eea",
+      secondary_action_color: "#764ba2",
+      font_family: "system-ui, -apple-system, sans-serif",
+      font_size: 16,
+      portfolio_title: "Mohammed Faraz",
+      portfolio_subtitle: "Full-Stack Developer & Data Analyst",
+      about_heading: "About Me",
+      about_text: "I'm a passionate developer with expertise in creating beautiful, functional web applications. I love turning complex problems into simple, elegant solutions. With a strong foundation in both frontend and backend technologies, I bring ideas to life through code.",
+      projects_heading: "Featured Projects",
+      contact_heading: "Let's Connect",
+      email_label: "Email",
+      location_label: "Location"
+    };
+
+    async function onConfigChange(config) {
+      const baseFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'system-ui, -apple-system, sans-serif';
+      const customFont = `${baseFont}, ${baseFontStack}`;
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      // Apply font to primary text
+      const heroTitle = document.getElementById('hero-title');
+      const heroSubtitle = document.getElementById('hero-subtitle');
+      const aboutHeading = document.getElementById('about-heading');
+      const projectsHeading = document.getElementById('projects-heading');
+      const contactHeading = document.getElementById('contact-heading');
+      
+      if (heroTitle) {
+        heroTitle.style.fontFamily = customFont;
+        heroTitle.style.fontSize = `${baseSize * 4}px`;
+        heroTitle.textContent = config.portfolio_title || defaultConfig.portfolio_title;
+      }
+      
+      if (heroSubtitle) {
+        heroSubtitle.style.fontFamily = customFont;
+        heroSubtitle.style.fontSize = `${baseSize * 1.5}px`;
+        heroSubtitle.textContent = config.portfolio_subtitle || defaultConfig.portfolio_subtitle;
+      }
+      
+      if (aboutHeading) {
+        aboutHeading.style.fontFamily = customFont;
+        aboutHeading.style.fontSize = `${baseSize * 3}px`;
+        aboutHeading.textContent = config.about_heading || defaultConfig.about_heading;
+      }
+      
+      const aboutText = document.getElementById('about-text');
+      if (aboutText) {
+        aboutText.style.fontFamily = customFont;
+        aboutText.style.fontSize = `${baseSize * 1.25}px`;
+        aboutText.textContent = config.about_text || defaultConfig.about_text;
+      }
+      
+      if (projectsHeading) {
+        projectsHeading.style.fontFamily = customFont;
+        projectsHeading.style.fontSize = `${baseSize * 3}px`;
+        projectsHeading.textContent = config.projects_heading || defaultConfig.projects_heading;
+      }
+      
+      if (contactHeading) {
+        contactHeading.style.fontFamily = customFont;
+        contactHeading.style.fontSize = `${baseSize * 3}px`;
+        contactHeading.textContent = config.contact_heading || defaultConfig.contact_heading;
+      }
+      
+      const emailLabel = document.getElementById('email-label');
+      if (emailLabel) {
+        emailLabel.textContent = config.email_label || defaultConfig.email_label;
+      }
+      
+      const locationLabel = document.getElementById('location-label');
+      if (locationLabel) {
+        locationLabel.textContent = config.location_label || defaultConfig.location_label;
+      }
+      
+      // Apply colors
+      const app = document.getElementById('app');
+      if (app) {
+        app.style.background = `linear-gradient(135deg, ${config.background_color || defaultConfig.background_color} 0%, ${config.surface_color || defaultConfig.surface_color} 50%, ${config.background_color || defaultConfig.background_color} 100%)`;
+      }
+      
+      const projectCards = document.querySelectorAll('.project-card');
+      projectCards.forEach(card => {
+        card.style.background = `${config.surface_color || defaultConfig.surface_color}80`;
+        card.style.borderColor = `${config.secondary_action_color || defaultConfig.secondary_action_color}40`;
+      });
+      
+      const buttons = document.querySelectorAll('a[href="#projects"], a[href="#contact"]');
+      if (buttons[0]) {
+        buttons[0].style.background = `linear-gradient(135deg, ${config.primary_action_color || defaultConfig.primary_action_color} 0%, ${config.secondary_action_color || defaultConfig.secondary_action_color} 100%)`;
+      }
+      if (buttons[1]) {
+        buttons[1].style.borderColor = config.primary_action_color || defaultConfig.primary_action_color;
+      }
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+            set: (value) => {
+              config.primary_action_color = value;
+              window.elementSdk.setConfig({ primary_action_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+            set: (value) => {
+              config.secondary_action_color = value;
+              window.elementSdk.setConfig({ secondary_action_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["portfolio_title", config.portfolio_title || defaultConfig.portfolio_title],
+        ["portfolio_subtitle", config.portfolio_subtitle || defaultConfig.portfolio_subtitle],
+        ["about_heading", config.about_heading || defaultConfig.about_heading],
+        ["about_text", config.about_text || defaultConfig.about_text],
+        ["projects_heading", config.projects_heading || defaultConfig.projects_heading],
+        ["contact_heading", config.contact_heading || defaultConfig.contact_heading],
+        ["email_label", config.email_label || defaultConfig.email_label],
+        ["location_label", config.location_label || defaultConfig.location_label]
+      ]);
+    }
+
+    // Create floating particles
+    function createParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 4 + 2 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 4 + 's';
+        particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+        container.appendChild(particle);
+      }
+    }
+
+    // Smooth scroll function
+    function initSmoothScroll() {
+      const appContainer = document.getElementById('app');
+      const navbarHeight = 80;
+      
+      // Get all anchor links (including those in navigation and buttons)
+      const anchors = document.querySelectorAll('a[href^="#"]');
+      
+      anchors.forEach(anchor => {
+        // Remove any existing listeners by cloning
+        const newAnchor = anchor.cloneNode(true);
+        anchor.parentNode.replaceChild(newAnchor, anchor);
+        
+        newAnchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const href = this.getAttribute('href');
+          
+          // Handle home/root link - smooth scroll to top
+          if (href === '#home' || href === '#' || !href || href === '#top') {
+            if (appContainer && appContainer.scrollTo) {
+              // Smooth scroll the app container to top
+              appContainer.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+            } else {
+              // Fallback to window scroll
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+              });
+              if (document.documentElement && document.documentElement.scrollTo) {
+                document.documentElement.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }
+            }
+            return;
+          }
+          
+          // Find target element
+          const target = document.querySelector(href);
+          if (!target) {
+            console.warn('Target element not found for:', href);
+            return;
+          }
+          
+          // Calculate scroll position
+          let scrollPosition = 0;
+          
+          if (appContainer) {
+            // Calculate position relative to app container
+            const containerTop = appContainer.getBoundingClientRect().top;
+            const targetTop = target.getBoundingClientRect().top;
+            scrollPosition = appContainer.scrollTop + (targetTop - containerTop) - navbarHeight;
+            
+            // Scroll the app container
+            appContainer.scrollTo({
+              top: Math.max(0, scrollPosition),
+              behavior: 'smooth'
+            });
+          } else {
+            // Fallback to window scroll
+            const targetTop = target.getBoundingClientRect().top + window.pageYOffset;
+            scrollPosition = targetTop - navbarHeight;
+            
+            window.scrollTo({
+              top: Math.max(0, scrollPosition),
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+
+    // Initialize everything
+    function initialize() {
+      createParticles();
+      initSmoothScroll();
+      
+      // Initialize SDK if available
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+    }
+
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initialize);
+    } else {
+      // DOM is already loaded
+      setTimeout(initialize, 100); // Small delay to ensure everything is ready
+    }
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9adf500583c647d5',t:'MTc2NTczMjIwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
