@@ -139,6 +139,145 @@
         transform: translateY(10px);
       }
     }
+    
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
+      border-radius: 18px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(102, 126, 234, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      isolation: isolate;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(12, 10, 30, 0.18) 0%, rgba(12, 10, 30, 0.7) 55%, rgba(12, 10, 30, 0.92) 100%);
+      transition: opacity 0.35s ease;
+      z-index: 0;
+    }
+    
+    .featured-card::after {
+      content: '';
+      position: absolute;
+      inset: -35%;
+      background:
+        radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.28), transparent 45%),
+        radial-gradient(circle at 80% 40%, rgba(118, 75, 162, 0.24), transparent 38%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+    
+    .featured-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+      border-color: rgba(118, 75, 162, 0.65);
+    }
+    
+    .featured-card:hover::after {
+      opacity: 1;
+    }
+    
+    .featured-card .card-cta {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(102, 126, 234, 0.55);
+      background: rgba(102, 126, 234, 0.12);
+      color: #d7dcff;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      z-index: 2;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+    
+    .featured-card:hover .card-cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.35);
+      transform: translateY(-2px) scale(1.03);
+    }
+    
+    .featured-card .card-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .featured-card .card-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #c7d2fe;
+      opacity: 0.85;
+    }
+    
+    .featured-card .card-title {
+      margin: 0;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      color: #ffffff;
+    }
+    
+    .featured-card .card-desc {
+      margin: 0;
+      color: #d1d5db;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+    
+    .featured-card .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .featured-card .card-tags span {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 11px;
+      border-radius: 9999px;
+      background: rgba(102, 126, 234, 0.14);
+      border: 1px solid rgba(102, 126, 234, 0.28);
+      color: #dfe4ff;
+      font-size: 0.78rem;
+    }
+    
+    .featured-card .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c3dafe;
+      font-weight: 600;
+      margin-top: 6px;
+      opacity: 0.9;
+      transition: gap 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .featured-card:hover .card-link {
+      gap: 12px;
+      opacity: 1;
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -291,72 +430,59 @@
    <section id="projects" class="relative py-20 px-6" style="z-index: 1;">
     <div class="max-w-7xl mx-auto">
      <h2 id="projects-heading" class="text-5xl font-bold mb-12 gradient-text text-center">Featured Projects</h2>
-     <div class="grid grid-cols-1 md:grid-cols-2 gap-8"><!-- Movie Recommendation System -->
-      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-       <div class="mb-4">
-        <h3 class="text-2xl font-bold text-white mb-2">EduRise Donation Portal</h3>
-        <p class="text-gray-400">EduRise aims to bridge the gap between students and donors through a transparent donation system.It allows students to request support, donors to contribute, and admins to manage approvals securely.</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <a href="https://edurise-frontend-azure.vercel.app/" target="_blank" rel="noopener noreferrer" class="featured-card group" style="background-image: linear-gradient(120deg, rgba(15, 12, 41, 0.32), rgba(15, 12, 41, 0.12)), url('https://as2.ftcdn.net/v2/jpg/01/99/05/35/1000_F_199053513_reNOz8CqNJx2zBxbhOUCTDpjcl3tb7CI.jpg');">
+       <span class="sr-only">Open EduRise Donation Portal</span>
+       <div class="card-cta" aria-hidden="true">↗</div>
+       <div class="card-content">
+        <p class="card-eyebrow">Full-stack • Spring Boot</p>
+        <h3 class="card-title">EduRise Donation Portal</h3>
+        <p class="card-desc">Bridges students and donors with transparent requests, approvals, and tracked contributions.</p>
+        <div class="card-tags"><span>Java</span> <span>Spring Boot</span> <span>React</span> <span>PostgreSQL</span></div>
+        <div class="card-link">Open project
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l10-10" /><path d="M9 7h8v8" /></svg>
+        </div>
        </div>
-       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Java</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Spring Boot</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">JWT Authentication</span>
+      </a>
+      <a href="https://your-ebus-live-link.com" target="_blank" rel="noopener noreferrer" class="featured-card group" style="background-image: linear-gradient(120deg, rgba(15, 12, 41, 0.32), rgba(15, 12, 41, 0.12)), url('https://images.unsplash.com/photo-1501703979959-797917eb21c8?auto=format&fit=crop&w=1200&q=80');">
+       <span class="sr-only">Open Ebus Management</span>
+       <div class="card-cta" aria-hidden="true">↗</div>
+       <div class="card-content">
+        <p class="card-eyebrow">Web App • Operations</p>
+        <h3 class="card-title">Ebus Management</h3>
+        <p class="card-desc">Route planning, ticketing, and fleet oversight streamlined into a single dashboard.</p>
+        <div class="card-tags"><span>Node.js</span> <span>Express</span> <span>MongoDB</span> <span>JWT</span></div>
+        <div class="card-link">Open project
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l10-10" /><path d="M9 7h8v8" /></svg>
+        </div>
        </div>
-       <div class="text-sm text-gray-400">
-        <p class="mb-2">🎯 Key Features:</p>
-        <ul class="list-disc list-inside space-y-1 text-gray-500">
-         <li>Full-stack project connecting students and donors.</li>
-         <li>Built with Java, Spring Boot, React, PostgreSQL.</li>
-         <li>Features JWT authentication & role-based access.</li>
-         <li>Tracks donations with admin approval workflow.</li>
-        </ul>
+      </a>
+      <a href="https://your-voice-assistant-live-link.com" target="_blank" rel="noopener noreferrer" class="featured-card group" style="background-image: linear-gradient(120deg, rgba(15, 12, 41, 0.32), rgba(15, 12, 41, 0.12)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80');">
+       <span class="sr-only">Open AI Voice Assistant</span>
+       <div class="card-cta" aria-hidden="true">↗</div>
+       <div class="card-content">
+        <p class="card-eyebrow">AI • Voice UX</p>
+        <h3 class="card-title">AI Voice Assistant</h3>
+        <p class="card-desc">Voice-first assistant that executes tasks, answers queries, and keeps conversation natural.</p>
+        <div class="card-tags"><span>Python</span> <span>Speech Recognition</span> <span>FastAPI</span> <span>WebSockets</span></div>
+        <div class="card-link">Open project
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l10-10" /><path d="M9 7h8v8" /></svg>
+        </div>
        </div>
-      </div><!-- Sentiment Analysis -->
-      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-       <div class="mb-4">
-        <h3 class="text-2xl font-bold text-white mb-2">💬Ebus Management</h3>
-        <p class="text-gray-400">A natural language processing tool that analyzes text sentiment and emotion detection with high accuracy.</p>
+      </a>
+      <a href="https://your-news-aggregator-live-link.com" target="_blank" rel="noopener noreferrer" class="featured-card group" style="background-image: linear-gradient(120deg, rgba(15, 12, 41, 0.32), rgba(15, 12, 41, 0.12)), url('https://images.unsplash.com/photo-1529333166433-772b0b0c1a4f?auto=format&fit=crop&w=1200&q=80');">
+       <span class="sr-only">Open Smart News Aggregator</span>
+       <div class="card-cta" aria-hidden="true">↗</div>
+       <div class="card-content">
+        <p class="card-eyebrow">Data • Scraping</p>
+        <h3 class="card-title">Smart News Aggregator</h3>
+        <p class="card-desc">Collects, de-duplicates, and categorizes news from multiple sources with live refresh.</p>
+        <div class="card-tags"><span>Python</span> <span>BeautifulSoup</span> <span>Redis</span> <span>Tailwind</span></div>
+        <div class="card-link">Open project
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l10-10" /><path d="M9 7h8v8" /></svg>
+        </div>
        </div>
-       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">NLP</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">NLTK</span>
-       </div>
-       <div class="text-sm text-gray-400">
-        <p class="mb-2">🎯 Key Features:</p>
-        <ul class="list-disc list-inside space-y-1 text-gray-500">
-         <li>Real-time sentiment detection</li>
-         <li>Emotion classification</li>
-         <li>Multilingual support</li>
-        </ul>
-       </div>
-      </div><!-- Voice Assistant -->
-      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-       <div class="mb-4">
-        <h3 class="text-2xl font-bold text-white mb-2">🎙️ AI Voice Assistant</h3>
-        <p class="text-gray-400">An intelligent voice-activated assistant capable of executing commands, answering queries, and controlling smart devices.</p>
-       </div>
-       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Speech Recognition</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">AI</span>
-       </div>
-       <div class="text-sm text-gray-400">
-        <p class="mb-2">🎯 Key Features:</p>
-        <ul class="list-disc list-inside space-y-1 text-gray-500">
-         <li>Voice command processing</li>
-         <li>Natural conversation flow</li>
-         <li>Task automation</li>
-        </ul>
-       </div>
-      </div><!-- News Aggregator -->
-      <div class="project-card bg-gray-900 bg-opacity-50 backdrop-blur-sm rounded-2xl p-6 border border-gray-800">
-       <div class="mb-4">
-        <h3 class="text-2xl font-bold text-white mb-2">📰 Smart News Aggregator</h3>
-        <p class="text-gray-400">A web scraping application that collects and organizes news from multiple sources with intelligent categorization.</p>
-       </div>
-       <div class="flex flex-wrap gap-2 mb-4"><span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Python</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">Web Scraping</span> <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: rgba(102, 126, 234, 0.2); color: #667eea;">BeautifulSoup</span>
-       </div>
-       <div class="text-sm text-gray-400">
-        <p class="mb-2">🎯 Key Features:</p>
-        <ul class="list-disc list-inside space-y-1 text-gray-500">
-         <li>Multi-source aggregation</li>
-         <li>Automatic categorization</li>
-         <li>Real-time updates</li>
-        </ul>
-       </div>
-      </div>
+      </a>
      </div>
     </div>
    </section><!-- Contact Section -->
